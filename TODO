@@ -1,0 +1,24 @@
+########################################################
+# ______                         _               _   
+# | ___ \                       | |             | |  
+# | |_/ /_   _____ _   _ _ __   | |__   ___  ___| |_ 
+# |    /\ \ / / _ \ | | | '_ \  | '_ \ / _ \/ __| __|
+# | |\ \ \ V /  __/ |_| | | | |_| | | | (_) \__ \ |_ 
+# \_| \_| \_/ \___|\__, |_| |_(_)_| |_|\___/|___/\__|
+#                   __/ |                  -Project-          
+#                  |___/                    -TODO-        
+#########################################################
+############# mod.FCbawt todo list
+
+- Finish the help menu.
+- cleanup in command (remove not used command)
+- Adding The weather (chanset +/- weather)
+- Adding Quote System (chanset +/- quotes) - quote by channel
+- Adding Gquote system (chanset +/- gquote) - One file for both quote
+- Adding IP check (chanset +/- IP - (Basic info about IP as city, dnsbl etc..)
+- Adding RSS system (chanset +/- rss | chanset rssurl <url>
+
+
+#########################################################
+ New request can be sent to rveyn@rizon.net
+#########################################################
