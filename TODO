@@ -17,7 +17,7 @@
 - Adding Gquote system (chanset +/- gquote) - One file for both quote
 - Adding IP check (chanset +/- IP - (Basic info about IP as city, dnsbl etc..)
 - Adding RSS system (chanset +/- rss | chanset rssurl <url>
-
+- Fix ban command for detect if !user@host of nick
 
 #########################################################
  New request can be sent to rveyn@rizon.net

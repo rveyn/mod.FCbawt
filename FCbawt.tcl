@@ -1667,6 +1667,8 @@ nickflood { if {![checksec $nick $host $handle]} { return 0 }
 	      close $file
 	      putnotc $nick "$who added with $why"
 	      return 1}
+ ip { if {![checksec $nick $host $handle]} { return 0 }
+
  }}
 
  ## Channel Voice Commands
