@@ -20,6 +20,11 @@
 ## Set global variables #
 #########################
 
+#Require 
+
+package require http
+package require tdom
+
 #Bot reponds to nick and this shortnick (botnick help / bn help)
 set shortnick "sis"
 
@@ -81,7 +86,7 @@ setudef flag autotopic
 setudef flag suspend
 setudef flag debug
 setudef int chanlimit
-
+setudef flag ip
 
 ## ----------------------------------------------------------------
 ## --- LOGIN/LOGOUT					        ---
@@ -1667,6 +1672,33 @@ nickflood { if {![checksec $nick $host $handle]} { return 0 }
 	      close $file
 	      putnotc $nick "$who added with $why"
 	      return 1}
+ ip { if {![checksec $nick $host $handle]} { return 0 }
+        set ip [lindex [split $who] 0]	
+        if {![ischanset $channel ip]} { return 0 }		
+	if {![regexp {^(?:(?:[01]?\d?\d|2[0-4]\d|25[0-5])(\.|$)){4}$} $ip]} { putserv "PRIVMSG $channel :$nick NO/Invalid IP pattern. USAGE: $shortnick ip 123.4.56.7"; return }
+
+	if {[catch {http::geturl "http://ip-api.com/json/$who"} tok]} {
+		putlog "Socket error: $tok"
+		return 0 }
+	if {[http::status $tok] ne "ok"} {
+	set status [http::status $tok]
+	putlog "TCP error: $status"
+	return 0 }
+	if {[http::ncode $tok] != 200} {
+	set code [http::code $tok]
+	http::cleanup $tok
+	putlog "HTTP Error: $code"
+	return 0 }
+
+	set connect [http::data $tok]
+	set connect [json::json2dict $connect]
+	set code [dict get $connect countryCode]
+	set country [dict get $connect country]
+	set regionname [dict get $connect region]
+	set city [dict get $connect city]
+	set isp [dict get $connect isp]
+        set timezone [dict get $connect timezone]
+	putserv "PRIVMSG $channel :\002QueryIP\002-> \002IP\002\[$who\] \002City\002\[$city\] \002Country\002\[$code - $country\] \002TimeZone\002\[$timezone\] \002ISP\002\[$isp\] <-\002QueryEND\002" }
  }}
 
  ## Channel Voice Commands

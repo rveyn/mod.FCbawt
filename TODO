@@ -15,7 +15,7 @@
 - Adding The weather (chanset +/- weather)
 - Adding Quote System (chanset +/- quotes) - quote by channel
 - Adding Gquote system (chanset +/- gquote) - One file for both quote
-- Adding IP check (chanset +/- IP - (Basic info about IP as city, dnsbl etc..)
+X Adding IP check (chanset +/- IP - (Basic info about IP as city, dnsbl etc..) - Done
 - Adding RSS system (chanset +/- rss | chanset rssurl <url>
 - Fix ban command for detect if !user@host of nick
 
