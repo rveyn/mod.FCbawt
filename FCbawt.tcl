@@ -1697,8 +1697,9 @@ nickflood { if {![checksec $nick $host $handle]} { return 0 }
 	set regionname [dict get $connect region]
 	set city [dict get $connect city]
 	set isp [dict get $connect isp]
+        set org [dict get $connect org]
         set timezone [dict get $connect timezone]
-	putserv "PRIVMSG $channel :\002QueryIP\002-> \002IP\002\[$who\] \002City\002\[$city\] \002Country\002\[$code - $country\] \002TimeZone\002\[$timezone\] \002ISP\002\[$isp\] <-\002QueryEND\002" }
+	putserv "PRIVMSG $channel :\002QueryIP\002-> \002IP\002\[$who\] \002City\002\[$city\] \002Country\002\[$code - $country\] \002TimeZone\002\[$timezone\] \002ISP\002\[$isp\] \002ORG\002\[$org\] <-\002QueryEND\002" }
  }}
 
  ## Channel Voice Commands
@@ -1940,7 +1941,7 @@ searchinfo { if {[ischanset $channel suspend]} {
 	    }
 	    if {[matchattr $handle &o $channel] || [matchattr $handle o]} {
 	    putserv "NOTICE $nick :\002Channel Op Commands:\002"
-           putserv "NOTICE $nick :say, act, topic, op, deop, banmask, ban, unban, banlist, kick, mode, addinfo"
+           putserv "NOTICE $nick :say, act, topic, op, deop, banmask, ban, unban, banlist, kick, mode, addinfo, IP"
 	    }
             if {[matchattr $handle &v $channel] || [matchattr $handle o]} {
 	    putserv "NOTICE $nick :\002Channel Voice Commands:\002" 
