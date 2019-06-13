@@ -20,6 +20,11 @@
 ## Set global variables #
 #########################
 
+#load
+
+source mod.FCbawt/required/httpd.tcl
+source mod.FCbawt/required/json.tcl
+
 #Require 
 
 package require http
